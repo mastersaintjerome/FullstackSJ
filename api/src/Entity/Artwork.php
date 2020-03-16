@@ -25,6 +25,30 @@ class Artwork
     private $id;
 
     /**
+     * @var string The description of this Artwork.
+     *
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank
+     */
+    public $description;
+
+    /**
+     * @var \DateTimeInterface The publication date of this Artwork.
+     *
+     * @ORM\Column(type="datetime")
+     * @Assert\NotNull
+     */
+    public $publicationDate;
+
+    /**
+     * @var string The image path of this Artwork.
+     *
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank
+     */
+    public $image;
+
+    /**
      * @var Local_Artwork[] Available local for this Artwork.
      *
      * @ORM\OneToMany(targetEntity="Local_Artwork", mappedBy="artwork", cascade={"persist", "remove"})
@@ -56,28 +80,11 @@ class Artwork
     public $authors;
 
     /**
-     * @var string The description of this Artwork.
+     * @var Rating[] Available rating for this artwork.
      *
-     * @ORM\Column(type="text")
-     * @Assert\NotBlank
+     * @ORM\OneToMany(targetEntity="Rating", mappedBy="artwork", cascade={"persist", "remove"})
      */
-    public $description;
-
-    /**
-     * @var \DateTimeInterface The publication date of this Artwork.
-     *
-     * @ORM\Column(type="datetime")
-     * @Assert\NotNull
-     */
-    public $publicationDate;
-
-    /**
-     * @var string The image path of this Artwork.
-     *
-     * @ORM\Column(type="text")
-     * @Assert\NotBlank
-     */
-    public $image;
+    public $ratings;
 
     /**
      * @return int
