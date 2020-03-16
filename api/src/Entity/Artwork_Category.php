@@ -23,4 +23,27 @@ class Artwork_Category
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /**
+     * @var string The category of the Artwork.
+     *
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank
+     */
+    public $category;
+
+    /**
+     * @var Artwork[] Available artwork for this category.
+     *
+     * @ORM\OneToMany(targetEntity="Artwork", mappedBy="Artwork_Category", cascade={"persist", "remove"})
+     */
+    public $artworks;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 }

@@ -23,4 +23,28 @@ class Artwork_Tag
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /**
+     * @var string The tag of the Artwork.
+     *
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank
+     */
+    public $tag;
+
+    /**
+     * @var Artwork[] Artworks of the tags
+     *
+     * @ORM\ManyToMany(targetEntity="Artwork", inversedBy="artwork_tag")
+     * @Assert\NotNull
+     */
+    public $artworks;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 }
