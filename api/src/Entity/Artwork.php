@@ -58,7 +58,7 @@ class Artwork
     /**
      * @var Artwork_Tag[] Tags of the Artwork
      *
-     * @ORM\ManyToMany(targetEntity="Artwork_tag", inversedBy="artwork")
+     * @ORM\ManyToMany(targetEntity="Artwork_tag")
      * @Assert\NotNull
      */
     public $tags;
@@ -66,7 +66,7 @@ class Artwork
     /**
      * @var Artwork The Category of the Artwork.
      *
-     * @ORM\ManyToOne(targetEntity="Artwork_Category", inversedBy="artwork")
+     * @ORM\ManyToOne(targetEntity="Artwork_Category", inversedBy="artworks")
      * @Assert\NotNull
      */
     public $category;
@@ -74,7 +74,7 @@ class Artwork
     /**
      * @var Author[] Authors of the Artwork
      *
-     * @ORM\ManyToMany(targetEntity="Author", inversedBy="artwork")
+     * @ORM\ManyToMany(targetEntity="Author")
      * @Assert\NotNull
      */
     public $authors;
@@ -85,6 +85,17 @@ class Artwork
      * @ORM\OneToMany(targetEntity="Rating", mappedBy="artwork", cascade={"persist", "remove"})
      */
     public $ratings;
+
+    /**
+     * Artwork_Category constructor.
+     */
+    public function __construct()
+    {
+        $this->tags = new ArrayCollection();
+        $this->ratings = new ArrayCollection();
+        $this->authors = new ArrayCollection();
+        $this->locals = new ArrayCollection();
+    }
 
     /**
      * @return int

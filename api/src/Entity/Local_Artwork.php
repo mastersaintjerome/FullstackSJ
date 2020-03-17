@@ -26,7 +26,7 @@ class Local_Artwork
     /**
      * @var Artwork The Artwork this local is about.
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="Artwork", inversedBy="local_artwork")
+     * @ORM\ManyToOne(targetEntity="Artwork", inversedBy="locals")
      * @Assert\NotNull
      */
     public $artwork;
@@ -38,28 +38,4 @@ class Local_Artwork
      * @Assert\NotBlank
      */
     public $title;
-
-    /**
-     * @return string
-     */
-    public function getLocal(): string
-    {
-        return $this->local;
-    }
-
-    /**
-     * @return Artwork
-     */
-    public function getArtwork(): Artwork
-    {
-        return $this->artwork;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle(): string
-    {
-        return $this->title;
-    }
 }

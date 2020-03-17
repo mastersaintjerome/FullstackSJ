@@ -35,9 +35,17 @@ class Artwork_Category
     /**
      * @var Artwork[] Available artwork for this category.
      *
-     * @ORM\OneToMany(targetEntity="Artwork", mappedBy="Artwork_Category", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Artwork", mappedBy="category", cascade={"persist", "remove"})
      */
     public $artworks;
+
+    /**
+     * Artwork_Category constructor.
+     */
+    public function __construct()
+    {
+        $this->artworks = new ArrayCollection();
+    }
 
     /**
      * @return int
@@ -46,4 +54,6 @@ class Artwork_Category
     {
         return $this->id;
     }
+
+
 }

@@ -17,16 +17,16 @@ class Rating
 {
     /**
      * @var User The User of the Rating.
-     *
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="rating")
+     * @ORM\Id
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="ratings")
      * @Assert\NotNull
      */
     public $user;
 
     /**
      * @var Artwork The Artwork of the Rating.
-     *
-     * @ORM\ManyToOne(targetEntity="Artwork", inversedBy="rating")
+     * @ORM\Id
+     * @ORM\ManyToOne(targetEntity="Artwork", inversedBy="ratings")
      * @Assert\NotNull
      */
     public $artwork;

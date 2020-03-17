@@ -41,14 +41,6 @@ class Author
     public $lastname;
 
     /**
-     * @var Artwork[] Artworks of the Authors
-     *
-     * @ORM\ManyToMany(targetEntity="Artwork", inversedBy="author")
-     * @Assert\NotNull
-     */
-    public $artworks;
-
-    /**
      * @return int
      */
     public function getId(): int

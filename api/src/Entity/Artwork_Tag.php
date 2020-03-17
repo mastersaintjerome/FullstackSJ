@@ -33,14 +33,6 @@ class Artwork_Tag
     public $tag;
 
     /**
-     * @var Artwork[] Artworks of the tags
-     *
-     * @ORM\ManyToMany(targetEntity="Artwork", inversedBy="artwork_tag")
-     * @Assert\NotNull
-     */
-    public $artworks;
-
-    /**
      * @return int
      */
     public function getId(): int

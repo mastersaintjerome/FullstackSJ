@@ -82,8 +82,24 @@ class User
     /**
      * @var Role The Role of the User.
      *
-     * @ORM\ManyToOne(targetEntity="Role", inversedBy="user")
+     * @ORM\ManyToOne(targetEntity="Role", inversedBy="users")
      * @Assert\NotNull
      */
     public $role;
+
+    /**
+     * Artwork_Category constructor.
+     */
+    public function __construct()
+    {
+        $this->ratings = new ArrayCollection();
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 }

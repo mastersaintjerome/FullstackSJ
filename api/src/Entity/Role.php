@@ -39,4 +39,19 @@ class Role
      */
     public $users;
 
+    /**
+     * Artwork_Category constructor.
+     */
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 }
