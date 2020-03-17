@@ -27,7 +27,7 @@ class Author
     /**
      * @var string The author firstName.
      *
-     * @ORM\Column
+     * @ORM\Column(type="text")
      * @Assert\NotBlank
      */
     public $firstname;
@@ -35,7 +35,7 @@ class Author
     /**
      * @var string The author lastname.
      *
-     * @ORM\Column
+     * @ORM\Column(type="text")
      * @Assert\NotBlank
      */
     public $lastname;
