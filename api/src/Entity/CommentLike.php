@@ -15,8 +15,16 @@ use Symfony\Component\Validator\Constraints as Assert;
 class CommentLike
 {
     /**
-     * @var User The User of the CommentLike.
+     * @var int The id of this User.
+     *
      * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @var User The User of the CommentLike.
      * @ORM\ManyToOne(targetEntity="User", inversedBy="commentlikes")
      * @Assert\NotNull
      */
@@ -24,7 +32,6 @@ class CommentLike
 
     /**
      * @var Comment The Comment of the CommentLike.
-     * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Comment", inversedBy="commentlikes")
      * @Assert\NotNull
      */

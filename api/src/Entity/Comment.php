@@ -75,4 +75,12 @@ class Comment
     {
         $this->commentlikes = new ArrayCollection();
     }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 }
