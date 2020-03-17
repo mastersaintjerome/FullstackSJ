@@ -80,6 +80,27 @@ class User
     public $ratings;
 
     /**
+     * @var Favorite[] Available favorite for this user.
+     *
+     * @ORM\OneToMany(targetEntity="Favorite", mappedBy="user", cascade={"persist", "remove"})
+     */
+    public $favorites;
+
+    /**
+     * @var Comment[] Available comment for this user.
+     *
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="user", cascade={"persist", "remove"})
+     */
+    public $comments;
+
+    /**
+     * @var CommentLike[] Available comment for this user.
+     *
+     * @ORM\OneToMany(targetEntity="CommentLike", mappedBy="user", cascade={"persist", "remove"})
+     */
+    public $commentlikes;
+
+    /**
      * @var Role The Role of the User.
      *
      * @ORM\ManyToOne(targetEntity="Role", inversedBy="users")
@@ -88,11 +109,14 @@ class User
     public $role;
 
     /**
-     * Artwork_Category constructor.
+     * User constructor.
      */
     public function __construct()
     {
         $this->ratings = new ArrayCollection();
+        $this->favorites = new ArrayCollection();
+        $this->comments = new ArrayCollection();
+        $this->commentlikes = new ArrayCollection();
     }
 
     /**

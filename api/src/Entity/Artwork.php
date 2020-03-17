@@ -87,6 +87,20 @@ class Artwork
     public $ratings;
 
     /**
+     * @var Favorite[] Available favorite for this artwork.
+     *
+     * @ORM\OneToMany(targetEntity="Favorite", mappedBy="artwork", cascade={"persist", "remove"})
+     */
+    public $favorites;
+
+    /**
+     * @var Comment[] Available comment for this artwork.
+     *
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="artwork", cascade={"persist", "remove"})
+     */
+    public $comments;
+
+    /**
      * Artwork_Category constructor.
      */
     public function __construct()
@@ -95,6 +109,8 @@ class Artwork
         $this->ratings = new ArrayCollection();
         $this->authors = new ArrayCollection();
         $this->locals = new ArrayCollection();
+        $this->favorites = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     /**
