@@ -6,6 +6,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * An User.
@@ -43,7 +44,7 @@ class User
     /**
      * @var string the pseudo of the user.
      *
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", unique=true)
      * @Assert\NotBlank
      */
     public $pseudo;
@@ -51,7 +52,7 @@ class User
     /**
      * @var string the email of the user.
      *
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", unique=true)
      * @Assert\NotBlank
      */
     public $email;
