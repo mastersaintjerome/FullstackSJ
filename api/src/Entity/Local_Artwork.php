@@ -38,4 +38,6 @@ class Local_Artwork
      * @Assert\NotBlank
      */
     public $title;
+
+
 }
