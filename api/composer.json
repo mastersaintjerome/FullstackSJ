@@ -7,7 +7,6 @@
         "api-platform/api-pack": "^1.1",
         "doctrine/doctrine-migrations-bundle": "^2.0",
         "guzzlehttp/guzzle": "^6.3",
-        "lexik/jwt-authentication-bundle": "^2.6",
         "symfony/console": "4.4.*",
         "symfony/dotenv": "4.4.*",
         "symfony/flex": "^1.1",
@@ -17,7 +16,6 @@
     },
     "require-dev": {
         "api-platform/schema-generator": "^2.1",
-        "hautelook/alice-bundle": "^2.7",
         "symfony/maker-bundle": "^1.11",
         "symfony/profiler-pack": "^1.0"
     },
