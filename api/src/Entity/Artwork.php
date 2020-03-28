@@ -52,14 +52,14 @@ class Artwork
     /**
      * @var Local_Artwork[] Available local for this Artwork.
      *
-     * @ORM\OneToMany(targetEntity="Local_Artwork", mappedBy="artwork", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="LocalArtwork", mappedBy="artwork", cascade={"persist", "remove"})
      */
     public $locals;
 
     /**
      * @var Artwork_Tag[] Tags of the Artwork
      *
-     * @ORM\ManyToMany(targetEntity="Artwork_tag")
+     * @ORM\ManyToMany(targetEntity="ArtworkTag")
      * @Assert\NotNull
      */
     public $tags;
@@ -67,7 +67,7 @@ class Artwork
     /**
      * @var Artwork The Category of the Artwork.
      *
-     * @ORM\ManyToOne(targetEntity="Artwork_Category", inversedBy="artworks")
+     * @ORM\ManyToOne(targetEntity="ArtworkCategory", inversedBy="artworks")
      * @Assert\NotNull
      */
     public $category;

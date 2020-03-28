@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ApiResource
  */
-class Local_Artwork
+class LocalArtwork
 {
     /**
      * @var string the local language.

@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ApiResource
  */
-class Artwork_Tag
+class ArtworkTag
 {
     /**
      * @var int The id of this Artwork Tag.

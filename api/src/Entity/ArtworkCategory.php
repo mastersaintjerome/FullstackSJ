@@ -14,7 +14,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity
  * @ApiResource
  */
-class Artwork_Category
+class ArtworkCategory
 {
     /**
      * @var int The id of this Artwork Category.

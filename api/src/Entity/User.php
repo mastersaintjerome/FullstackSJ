@@ -104,14 +104,6 @@ class User implements UserInterface
     public $commentlikes;
 
     /**
-     * @var Role The Role of the User.
-     *
-     * @ORM\ManyToOne(targetEntity="Role", inversedBy="users")
-     * @Assert\NotNull
-     */
-    public $role;
-
-    /**
      * User constructor.
      */
     public function __construct()
