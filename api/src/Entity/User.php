@@ -50,7 +50,7 @@ class User implements UserInterface
      * @ORM\Column(type="text", unique=true)
      * @Assert\NotBlank
      */
-    public $pseudo;
+    public $username;
 
     /**
      * @var string the email of the user.
@@ -91,6 +91,13 @@ class User implements UserInterface
     public $favorites;
 
     /**
+     * @var string[]
+     *
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
+
+    /**
      * @var Comment[] Available comment for this user.
      *
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="user", cascade={"persist", "remove"})
@@ -123,13 +130,6 @@ class User implements UserInterface
         return $this->id;
     }
 
-    /**
-     * @var string[]
-     *
-     * @ORM\Column(type="json")
-     */
-    private $roles = [];
-
     public function getEmail(): ?string
     {
         return $this->email;
@@ -141,20 +141,14 @@ class User implements UserInterface
     }
 
     /**
-     * @return string
+     * @param string $username
      */
-    public function getPseudo(): string
+    public function setUsername(string $username): void
     {
-        return $this->pseudo;
+        $this->username = $username;
     }
 
-    /**
-     * @param string $pseudo
-     */
-    public function setPseudo(string $pseudo): void
-    {
-        $this->pseudo = $pseudo;
-    }
+
 
     /**
      * {@inheritdoc}
@@ -208,6 +202,7 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->pseudo;
+        return (string) $this->username;
     }
+
 }
