@@ -9,12 +9,33 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * An User.
- *
+ * @ApiResource(
+ *     attributes={"security"="is_granted('ROLE_USER')"},
+ *     collectionOperations={
+ *          "get",
+ *          "post"={
+ *              "security"="is_granted('IS_AUTHENTICATED_ANONYMOUSLY')",
+ *              "validation_groups"={"Default", "create"}
+ *          },
+ *     },
+ *     itemOperations={
+ *          "get",
+ *          "put"={"security"="is_granted('ROLE_USER') and object.owner == user"},
+ *          "delete"={"security"="is_granted('ROLE_ADMIN')"}
+ *     },
+ *     normalizationContext={"groups"={"user:read"}},
+ *     denormalizationContext={"groups"={"user:write"}},
+ * )
+ * @ApiFilter(PropertyFilter::class)
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @ApiResource
  * @ORM\Table(name="`user`")
  */
 class User implements UserInterface
@@ -32,6 +53,7 @@ class User implements UserInterface
      * @var string the firstname of the user.
      *
      * @ORM\Column(type="text")
+     * @Groups({"user:read", "user:write"})
      * @Assert\NotBlank
      */
     public $firstname;
@@ -40,6 +62,7 @@ class User implements UserInterface
      * @var string the lastname of the user.
      *
      * @ORM\Column(type="text")
+     * @Groups({"user:read", "user:write"})
      * @Assert\NotBlank
      */
     public $lastname;
@@ -48,6 +71,7 @@ class User implements UserInterface
      * @var string the pseudo of the user.
      *
      * @ORM\Column(type="text", unique=true)
+     * @Groups({"user:read", "user:write"})
      * @Assert\NotBlank
      */
     public $username;
@@ -56,6 +80,7 @@ class User implements UserInterface
      * @var string the email of the user.
      *
      * @ORM\Column(type="text", unique=true)
+     * @Groups({"user:read", "user:write"})
      * @Assert\NotBlank
      */
     public $email;
@@ -64,7 +89,6 @@ class User implements UserInterface
      * @var string the password of the user.
      *
      * @ORM\Column(type="text")
-     * @Assert\NotBlank
      */
     public $password;
 
@@ -72,6 +96,7 @@ class User implements UserInterface
      * @var \DateTimeInterface The birthDate of the user.
      *
      * @ORM\Column(type="datetime")
+     * @Groups({"user:read", "user:write"})
      * @Assert\NotNull
      */
     public $birthDate;
@@ -80,6 +105,7 @@ class User implements UserInterface
      * @var Rating[] Available rating for this user.
      *
      * @ORM\OneToMany(targetEntity="Rating", mappedBy="user", cascade={"persist", "remove"})
+     * @Groups({"user:read", "user:write"})
      */
     public $ratings;
 
@@ -87,6 +113,7 @@ class User implements UserInterface
      * @var Favorite[] Available favorite for this user.
      *
      * @ORM\OneToMany(targetEntity="Favorite", mappedBy="user", cascade={"persist", "remove"})
+     * @Groups({"user:read", "user:write"})
      */
     public $favorites;
 
@@ -101,6 +128,7 @@ class User implements UserInterface
      * @var Comment[] Available comment for this user.
      *
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="user", cascade={"persist", "remove"})
+     * @Groups({"user:read", "user:write"})
      */
     public $comments;
 
@@ -108,8 +136,16 @@ class User implements UserInterface
      * @var CommentLike[] Available comment for this user.
      *
      * @ORM\OneToMany(targetEntity="CommentLike", mappedBy="user", cascade={"persist", "remove"})
+     * @Groups({"user:read", "user:write"})
      */
     public $commentlikes;
+
+    /**
+     * @Groups("user:write")
+     * @SerializedName("password")
+     * @Assert\NotBlank(groups={"create"})
+     */
+    private $plainPassword;
 
     /**
      * User constructor.
@@ -148,15 +184,13 @@ class User implements UserInterface
         $this->username = $username;
     }
 
-
-
     /**
      * {@inheritdoc}
      */
     public function eraseCredentials(): void
     {
         // if you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+        $this->plainPassword = null;
     }
 
     /**
@@ -205,4 +239,14 @@ class User implements UserInterface
         return (string) $this->username;
     }
 
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(string $plainPassword): self
+    {
+        $this->plainPassword = $plainPassword;
+        return $this;
+    }
 }
