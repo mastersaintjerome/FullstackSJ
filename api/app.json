@@ -1,9 +1,9 @@
 {
   "success_url": "/",
   "env": {
-    "APP_ENV": "prod",
+    "APP_ENV": "dev",
     "APP_SECRET": {"generator": "secret"},
-    "CORS_ALLOW_ORIGIN": "https://fullstack-js-2020.herokuapp.com"
+    "CORS_ALLOW_ORIGIN": "https://fullstack-js-2020.herokuapp.com/"
   },
   "addons": [
     "heroku-postgresql"
