@@ -6,7 +6,7 @@
     "CORS_ALLOW_ORIGIN": "https://fullstack-js-2020.herokuapp.com/"
   },
   "addons": [
-    "heroku-postgresql"
+    "plan": "heroku-postgresql"
   ],
   "buildpacks": [
     {
