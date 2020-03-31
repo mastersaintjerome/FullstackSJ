@@ -1,5 +1,4 @@
 # FullstackSJ
-
 ## Développement FullStack : Web/Mobile/Docker
 
 ### Contexte du projet
