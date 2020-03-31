@@ -5,6 +5,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -45,17 +46,19 @@ class Artwork
     private $id;
 
     /**
-     * @var string The description of this Artwork.
+     * @var string The synopsis of this Artwork.
      *
      * @ORM\Column(type="text")
+     * @Groups({"user:read", "user:write"})
      * @Assert\NotBlank
      */
-    public $description;
+    public $synopsis;
 
     /**
      * @var \DateTimeInterface The publication date of this Artwork.
      *
      * @ORM\Column(type="datetime")
+     * @Groups({"user:read", "user:write"})
      * @Assert\NotNull
      */
     public $publicationDate;
@@ -64,14 +67,16 @@ class Artwork
      * @var string The image path of this Artwork.
      *
      * @ORM\Column(type="text")
+     * @Groups({"user:read", "user:write"})
      * @Assert\NotBlank
      */
     public $image;
 
     /**
      * @var Local_Artwork[] Available local for this Artwork.
-     *
      * @ORM\OneToMany(targetEntity="LocalArtwork", mappedBy="artwork", cascade={"persist", "remove"})
+     * @ApiSubresource
+     * @Groups({"user:read", "user:write"})
      */
     public $locals;
 
@@ -79,6 +84,8 @@ class Artwork
      * @var Artwork_Tag[] Tags of the Artwork
      *
      * @ORM\ManyToMany(targetEntity="ArtworkTag")
+     * @ApiSubresource
+     * @Groups({"user:read", "user:write"})
      * @Assert\NotNull
      */
     public $tags;
@@ -87,6 +94,8 @@ class Artwork
      * @var Artwork The Category of the Artwork.
      *
      * @ORM\ManyToOne(targetEntity="ArtworkCategory", inversedBy="artworks")
+     * @ApiSubresource
+     * @Groups({"user:read", "user:write"})
      * @Assert\NotNull
      */
     public $category;
@@ -95,28 +104,33 @@ class Artwork
      * @var Author[] Authors of the Artwork
      *
      * @ORM\ManyToMany(targetEntity="Author")
+     * @ApiSubresource
+     * @Groups({"user:read", "user:write"})
      * @Assert\NotNull
      */
     public $authors;
 
     /**
      * @var Rating[] Available rating for this artwork.
-     *
      * @ORM\OneToMany(targetEntity="Rating", mappedBy="artwork", cascade={"persist", "remove"})
+     * @ApiSubresource
+     * @Groups({"user:read", "user:write"})
      */
     public $ratings;
 
     /**
      * @var Favorite[] Available favorite for this artwork.
-     *
      * @ORM\OneToMany(targetEntity="Favorite", mappedBy="artwork", cascade={"persist", "remove"})
+     * @ApiSubresource
+     * @Groups({"user:read", "user:write"})
      */
     public $favorites;
 
     /**
      * @var Comment[] Available comment for this artwork.
-     *
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="artwork", cascade={"persist", "remove"})
+     * @ApiSubresource
+     * @Groups({"user:read", "user:write"})
      */
     public $comments;
 
