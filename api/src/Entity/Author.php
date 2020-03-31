@@ -17,7 +17,7 @@ use Symfony\Component\Serializer\Annotation\SerializedName;
  *
  * @ORM\Entity
  * @ApiResource(
- *     attributes={"security"="is_granted('ROLE_USER')"},
+ *     attributes={"security"="IS_AUTHENTICATED_ANONYMOUSLY"},
  *     collectionOperations={
  *          "get",
  *          "post"={"security"="is_granted('IS_AUTHENTICATED_ANONYMOUSLY')"},
@@ -47,6 +47,7 @@ class Author
      * @var string The author firstName.
      *
      * @ORM\Column(type="text")
+     * @Groups({"user:read", "user:write"})
      * @Assert\NotBlank
      */
     public $firstname;
@@ -55,6 +56,7 @@ class Author
      * @var string The author lastname.
      *
      * @ORM\Column(type="text")
+     * @Groups({"user:read", "user:write"})
      * @Assert\NotBlank
      */
     public $lastname;

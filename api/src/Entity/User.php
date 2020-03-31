@@ -5,6 +5,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -105,6 +106,7 @@ class User implements UserInterface
      * @var Rating[] Available rating for this user.
      *
      * @ORM\OneToMany(targetEntity="Rating", mappedBy="user", cascade={"persist", "remove"})
+     * @ApiSubresource
      * @Groups({"user:read", "user:write"})
      */
     public $ratings;
@@ -113,6 +115,7 @@ class User implements UserInterface
      * @var Favorite[] Available favorite for this user.
      *
      * @ORM\OneToMany(targetEntity="Favorite", mappedBy="user", cascade={"persist", "remove"})
+     * @ApiSubresource
      * @Groups({"user:read", "user:write"})
      */
     public $favorites;
@@ -128,6 +131,7 @@ class User implements UserInterface
      * @var Comment[] Available comment for this user.
      *
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="user", cascade={"persist", "remove"})
+     * @ApiSubresource
      * @Groups({"user:read", "user:write"})
      */
     public $comments;
@@ -136,6 +140,7 @@ class User implements UserInterface
      * @var CommentLike[] Available comment for this user.
      *
      * @ORM\OneToMany(targetEntity="CommentLike", mappedBy="user", cascade={"persist", "remove"})
+     * @ApiSubresource
      * @Groups({"user:read", "user:write"})
      */
     public $commentlikes;

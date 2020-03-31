@@ -5,6 +5,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -48,6 +49,7 @@ class ArtworkCategory
      * @var string The category of the Artwork.
      *
      * @ORM\Column(type="text")
+     * @Groups({"user:read", "user:write"})
      * @Assert\NotBlank
      */
     public $category;
@@ -56,6 +58,8 @@ class ArtworkCategory
      * @var Artwork[] Available artwork for this category.
      *
      * @ORM\OneToMany(targetEntity="Artwork", mappedBy="category", cascade={"persist", "remove"})
+     * @Groups({"user:read", "user:write"})
+     * @ApiSubresource
      */
     public $artworks;
 

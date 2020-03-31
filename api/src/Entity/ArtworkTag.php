@@ -47,6 +47,7 @@ class ArtworkTag
      * @var string The tag of the Artwork.
      *
      * @ORM\Column(type="text")
+     * @Groups({"user:read", "user:write"})
      * @Assert\NotBlank
      */
     public $tag;
