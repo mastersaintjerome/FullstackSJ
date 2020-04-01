@@ -2,7 +2,7 @@
   "success_url": "/",
   "env": {
     "APP_ENV": "dev",
-    "APP_SECRET": {"generator": "secret"},
+    "APP_SECRET": "!ChangeMe!",
     "CORS_ALLOW_ORIGIN": "https://fullstack-js-2020.herokuapp.com"
   },
   "addons": [
