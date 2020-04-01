@@ -88,7 +88,6 @@ You could set the environment variables in the .env file at the top level of the
 For example:
 <code>
 ADMIN_HOST=admin.example.com
-<br/>
 ADMIN_IMAGE=registry.example.com/api-platform/admin
 API_HOST=api.example.com
 APP_SECRET=3c857494cfcc42c700dfb7a6
