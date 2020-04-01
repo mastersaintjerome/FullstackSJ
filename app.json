@@ -10,7 +10,10 @@
   ],
   "buildpacks": [
     {
-      "url": "https://github.com/heroku/heroku-buildpack-php"
+      "url": "https://github.com/heroku/heroku-buildpack-php",
+    {
+      "url": "heroku/php"
+    }
     }
   ],
   "scripts": {
