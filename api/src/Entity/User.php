@@ -19,7 +19,7 @@ use Symfony\Component\Serializer\Annotation\SerializedName;
 /**
  * An User.
  * @ApiResource(
- *     attributes={"security"="is_granted('ROLE_USER')"},
+ *     attributes={"security"="is_granted('IS_AUTHENTICATED_ANONYMOUSLY')"},
  *     collectionOperations={
  *          "get",
  *          "post"={
@@ -29,8 +29,8 @@ use Symfony\Component\Serializer\Annotation\SerializedName;
  *     },
  *     itemOperations={
  *          "get",
- *          "put"={"security"="is_granted('ROLE_USER') and object.owner == user"},
- *          "delete"={"security"="is_granted('ROLE_ADMIN')"}
+ *          "put"={"security"="is_granted('IS_AUTHENTICATED_ANONYMOUSLY') and object.owner == user"},
+ *          "delete"={"security"="is_granted('IS_AUTHENTICATED_ANONYMOUSLY')"}
  *     },
  *     normalizationContext={"groups"={"user:read"}},
  *     denormalizationContext={"groups"={"user:write"}},
@@ -219,7 +219,6 @@ class User implements UserInterface
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
-
         return array_unique($roles);
     }
 

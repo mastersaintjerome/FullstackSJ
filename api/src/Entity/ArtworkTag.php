@@ -17,15 +17,15 @@ use Symfony\Component\Serializer\Annotation\SerializedName;
  *
  * @ORM\Entity
  * @ApiResource(
- *     attributes={"security"="is_granted('ROLE_USER')"},
+ *     attributes={"security"="is_granted('IS_AUTHENTICATED_ANONYMOUSLY')"},
  *     collectionOperations={
  *          "get",
  *          "post"={"security"="is_granted('IS_AUTHENTICATED_ANONYMOUSLY')"},
  *     },
  *     itemOperations={
  *          "get",
- *          "put"={"security"="is_granted('ROLE_ADMIN')"},
- *          "delete"={"security"="is_granted('ROLE_ADMIN')"}
+ *          "put"={"security"="is_granted('IS_AUTHENTICATED_ANONYMOUSLY')"},
+ *          "delete"={"security"="is_granted('IS_AUTHENTICATED_ANONYMOUSLY')"}
  *     },
  *     normalizationContext={"groups"={"user:read"}},
  *     denormalizationContext={"groups"={"user:write"}},

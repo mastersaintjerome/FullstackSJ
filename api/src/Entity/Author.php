@@ -24,8 +24,8 @@ use Symfony\Component\Serializer\Annotation\SerializedName;
  *     },
  *     itemOperations={
  *          "get",
- *          "put"={"security"="is_granted('ROLE_ADMIN')"},
- *          "delete"={"security"="is_granted('ROLE_ADMIN')"}
+ *          "put"={"security"="is_granted('IS_AUTHENTICATED_ANONYMOUSLY')"},
+ *          "delete"={"security"="is_granted('IS_AUTHENTICATED_ANONYMOUSLY')"}
  *     },
  *     normalizationContext={"groups"={"user:read"}},
  *     denormalizationContext={"groups"={"user:write"}},
