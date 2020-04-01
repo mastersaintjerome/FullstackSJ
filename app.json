@@ -7,7 +7,7 @@
   },
   "addons": [
         {
-      "plan": "heroku-postgresql",
+      "plan": "heroku-postgresql:hobby-dev",
       "options": {
         "version": "9.5"
       }
