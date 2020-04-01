@@ -4,25 +4,25 @@
 
 ### Contexte du projet
 La plupart des produits disponibles sur le marché répondent à une architecture dites full stack.
-En effet un grand nombre d’acteurs privés fonden t leurs produits avec une site web, un
+En effet un grand nombre d’acteurs privés fondent leurs produits avec une site web, un
 backoffice permettant de gérer une base de données, une API permettant de faire l’interface
 entre la base de données et les clients (mobiles ou web), et des applications mobiles. Le but est
-de se rapprocher de l’envir onnement technique des sociétés sur le marché.
+de se rapprocher de l’environnement technique des sociétés sur le marché.
 
 ### Objectif du projet
 Développer un système en deux parties. Une partie web comprenant un backoffice et une base
 de données. Une autre partie concernant un client mobile.
 
 ### Description fonctionnelle des besoins
-Le sujet de cet application est libre. En revanche l’application mobile devra démontrer une réelle
+Le sujet de cette application est libre. En revanche l’application mobile devra démontrer une réelle
 utilité pour l’utilisateur et être synchronisé avec le service web. De plus le déploiement de l’API,
 la base de donnée et le backoffice devront se faire grâce à docker.
 
 ### Contraintes techniques
-- Langage de programmation backoffice libre
+- Langage de programmation backoffice PHP
 - Base de données Postgres
 - Toute la stack web déployée grâce à Docker
-- Application mobile native iOS (Swift ou SwiftUI) et/ou Android (Kotlin)
+- Application mobile native Android (Kotlin)
 
 ### Résultats attendus
 Lors de la présentation vous devrez déployer toute votre stack web grâce à docker et présenter
@@ -54,13 +54,14 @@ $ docker-compose logs -f # follow the logs
 </code>
 
 ### Accès API
-https://localhost pour accèder à l'accueil de l'API
+https://localhost pour accéder à l'accueil de l'API
 
-https://localhost:8443/ pour accèder à l'API
+https://localhost:8443/ pour accéder à l'API
 
-https://localhost:444 pour accèder à l'Administration de l'API
+https://localhost:444 pour accéder à l'interface d'administration de l'API
 
 ### Seulement en cas de déploiement en Production
+Plusieurs pistes (soit par un docker-compose-prod, soit par un app.json) ont été essayés mais la prod n'a pas été concluante.
 
 ## Building and Pushing the Docker Images
 
