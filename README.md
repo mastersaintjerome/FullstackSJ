@@ -20,7 +20,7 @@ la base de donnée et le backoffice devront se faire grâce à docker.
 
 ### Contraintes techniques
 - Langage de programmation backoffice libre
-- Base de données MariaDB ou Postgres
+- Base de données Postgres
 - Toute la stack web déployée grâce à Docker
 - Application mobile native iOS (Swift ou SwiftUI) et/ou Android (Kotlin)
 
