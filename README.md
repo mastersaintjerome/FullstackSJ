@@ -54,9 +54,13 @@ $ docker-compose logs -f # follow the logs
 </code>
 
 ### Accès API
+https://localhost pour accèder à l'accueil de l'API
+
 https://localhost:8443/ pour accèder à l'API
 
 https://localhost:444 pour accèder à l'Administration de l'API
+
+### Seulement en cas de déploiement en Production
 
 ## Building and Pushing the Docker Images
 
